@@ -30,3 +30,9 @@ message Connection {
   int32 a = 1;
   int32 b = 2;
 }
+
+message WrittenCSVInfo {
+  string filename = 1;
+  string filepath = 2;
+  string recordType = 3;
+}
