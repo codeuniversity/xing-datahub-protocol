@@ -3,7 +3,7 @@ syntax = "proto3";
 message User {
   int32 id = 1;
   repeated int32 jobroles = 2;
-  int32 caree_level = 3;
+  int32 career_level = 3;
   int32 discipline_id = 4;
   int32 industry_id = 5;
   string country = 6;
