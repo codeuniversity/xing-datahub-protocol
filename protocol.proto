@@ -1,34 +1,51 @@
 syntax = "proto3";
 
-
 message User {
   int32 id = 1;
-  string first_name = 2;
-  string last_name = 3;
-  string gender = 4;
-  repeated string wants = 5;
-  repeated string haves = 6;
-  Address business_address = 7;
-
-  message Company {
-    string title = 1;
-    string name = 2;
-  }
-
-  Company primary_company = 8;
-  repeated string languages = 9;
+  repeated int32 jobroles = 2;
+  int32 caree_level = 3;
+  int32 discipline_id = 4;
+  int32 industry_id = 5;
+  string country = 6;
+  int32 region = 7;
+  int32 experience_n_entries_class = 8;
+  int32 experience_years_experience = 9;
+  int32 experience_years_in_current = 10;
+  int32 edu_degree = 11;
+  repeated int32 edu_fieldofstudies = 12;
+  int32 wtcj = 13;
+  int32 premium = 14;
 }
 
-message Address {
-  string country = 1;
-  string zipcode = 2;
-  string city = 3;
-  string street = 4;
+message Item {
+  int32 id = 1;
+  int32 title = 2;
+  int32 career_level = 3;
+  int32 discipline_id = 4;
+  int32 industry_id = 5;
+  string country = 6;
+  int32 is_payed = 7;
+  int32 region = 8;
+  float latitude = 9;
+  float longitude = 10;
+  int32 employment = 11;
+  repeated int32 tags = 12;
+  int64 created_at = 13;
 }
 
-message Connection {
-  int32 a = 1;
-  int32 b = 2;
+message Interaction {
+  int32 user_id = 1;
+  int32 item_id = 2;
+  int32 interaction_type = 3;
+  int64 created_at = 4;
+}
+
+message TargetUser {
+  int32 user_id = 1;
+}
+
+message TargetItem {
+  int32 item_id = 1;
 }
 
 message WrittenCSVInfo {
