@@ -79,7 +79,7 @@ func (u *RawTargetItem) Parse() proto.Message {
 func toInt32(s string) int32 {
 	i, err := strconv.ParseInt(s, 10, 32)
 	if err != nil {
-		panic(err)
+		return 0
 	}
 	return int32(i)
 }
@@ -87,7 +87,7 @@ func toInt32(s string) int32 {
 func toInt64(s string) int64 {
 	i, err := strconv.ParseInt(s, 10, 64)
 	if err != nil {
-		panic(err)
+		return 0
 	}
 	return i
 }
@@ -104,7 +104,7 @@ func toInt32Slice(s string) []int32 {
 func toFloat32(s string) float32 {
 	f, err := strconv.ParseFloat(s, 32)
 	if err != nil {
-		panic(err)
+		return 0.0
 	}
 	return float32(f)
 }
