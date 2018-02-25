@@ -9,6 +9,7 @@ import (
 
 //RawMessage handles the conversion of the unexpected json input to expected format
 type RawMessage interface {
+	proto.Message
 	Parse() *proto.Message
 }
 
