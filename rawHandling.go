@@ -93,6 +93,9 @@ func toInt64(s string) int64 {
 }
 
 func toInt32Slice(s string) []int32 {
+	if s == "" {
+		return []int32{}
+	}
 	parts := strings.Split(s, ",")
 	result := []int32{}
 	for _, p := range parts {
