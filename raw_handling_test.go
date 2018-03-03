@@ -34,6 +34,7 @@ func TestUserHandling(t *testing.T) {
 			Premium:                   0,
 		}
 		So(user, ShouldResemble, expected)
+		So(user.Parse().(*RawUser), ShouldResemble, ru)
 	})
 }
 func TestConversionFuncs(t *testing.T) {
@@ -43,13 +44,21 @@ func TestConversionFuncs(t *testing.T) {
 			So(toInt64(""), ShouldBeZeroValue)
 			So(toFloat32(""), ShouldBeZeroValue)
 			So(toInt32Slice(""), ShouldBeEmpty)
+			So(formatInt32(0), ShouldEqual, "0")
+			So(formatInt64(0), ShouldEqual, "0")
+			So(formatFloat32(0.0), ShouldStartWith, "0.0")
+			So(formatInt32Slice([]int32{}), ShouldEqual, "")
 		})
 
 		Convey("Given an input", func() {
 			So(toInt32("11"), ShouldEqual, 11)
 			So(toInt64("22"), ShouldEqual, 22)
-			So(toFloat32("33"), ShouldEqual, 33.0)
+			So(toFloat32("33.89"), ShouldEqual, 33.89)
 			So(toInt32Slice("1,55,88"), ShouldResemble, []int32{1, 55, 88})
+			So(formatInt32(11), ShouldEqual, "11")
+			So(formatInt64(22), ShouldEqual, "22")
+			So(formatFloat32(33.3), ShouldStartWith, "33.")
+			So(formatInt32Slice([]int32{22, 33, 64}), ShouldEqual, "22,33,64")
 		})
 	})
 }
