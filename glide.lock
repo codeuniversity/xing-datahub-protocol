@@ -1,0 +1,18 @@
+hash: 57aea424555dd31b7e504f0aa18ca710bb90c698a19a2a62388663df081fbb66
+updated: 2018-03-03T10:04:30.620187+01:00
+imports:
+- name: github.com/gogo/protobuf
+  version: 1adfc126b41513cc696b209667c8656ea7aac67c
+  subpackages:
+  - proto
+- name: github.com/golang/protobuf
+  version: 925541529c1fa6821df4e44ce2723319eb2be768
+  subpackages:
+  - jsonpb
+  - proto
+  - ptypes/struct
+- name: github.com/smartystreets/goconvey
+  version: 9e8dc3f972df6c8fcc0375ef492c24d0bb204857
+  subpackages:
+  - convey
+testImports: []
