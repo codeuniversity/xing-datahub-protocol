@@ -111,3 +111,86 @@ func toFloat32(s string) float32 {
 	}
 	return float32(f)
 }
+
+//Parse User to RawUser
+func (u User) Parse() proto.Message {
+	return &RawUser{
+		Id:                        formatInt32(u.Id),
+		Jobroles:                  formatInt32Slice(u.Jobroles),
+		CareerLevel:               formatInt32(u.CareerLevel),
+		DisciplineId:              formatInt32(u.DisciplineId),
+		IndustryId:                formatInt32(u.IndustryId),
+		Country:                   u.Country,
+		Region:                    formatInt32(u.Region),
+		ExperienceNEntriesClass:   formatInt32(u.ExperienceNEntriesClass),
+		ExperienceYearsExperience: formatInt32(u.ExperienceYearsExperience),
+		ExperienceYearsInCurrent:  formatInt32(u.ExperienceYearsInCurrent),
+		EduDegree:                 formatInt32(u.EduDegree),
+		EduFieldofstudies:         formatInt32Slice(u.EduFieldofstudies),
+		Wtcj:                      formatInt32(u.Wtcj),
+		Premium:                   formatInt32(u.Premium),
+	}
+}
+
+//Parse Item to RawItem
+func (u *Item) Parse() proto.Message {
+	return &RawItem{
+		Id:           formatInt32(u.Id),
+		Title:        formatInt32(u.Title),
+		CareerLevel:  formatInt32(u.CareerLevel),
+		DisciplineId: formatInt32(u.DisciplineId),
+		IndustryId:   formatInt32(u.IndustryId),
+		Country:      u.Country,
+		IsPayed:      formatInt32(u.IsPayed),
+		Region:       formatInt32(u.Region),
+		Latitude:     formatFloat32(u.Latitude),
+		Longitude:    formatFloat32(u.Longitude),
+		Employment:   formatInt32(u.Employment),
+		Tags:         formatInt32Slice(u.Tags),
+		CreatedAt:    formatInt64(u.CreatedAt),
+	}
+}
+
+//Parse Interaction to RawInteraction
+func (u *Interaction) Parse() proto.Message {
+	return &RawInteraction{
+		UserId:          formatInt32(u.UserId),
+		ItemId:          formatInt32(u.ItemId),
+		InteractionType: formatInt32(u.InteractionType),
+		CreatedAt:       formatInt64(u.CreatedAt),
+	}
+}
+
+//Parse TargetUser to RawTargetUser
+func (u *TargetUser) Parse() proto.Message {
+	return &RawTargetUser{
+		UserId: formatInt32(u.UserId),
+	}
+}
+
+//Parse TargetItem to RawTargetItem
+func (u *TargetItem) Parse() proto.Message {
+	return &RawTargetItem{
+		ItemId: formatInt32(u.ItemId),
+	}
+}
+
+func formatInt32(i int32) string {
+	return strconv.FormatInt(int64(i), 10)
+}
+
+func formatInt64(i int64) string {
+	return strconv.FormatInt(i, 10)
+}
+
+func formatInt32Slice(i []int32) string {
+	s := []string{}
+	for _, element := range i {
+		s = append(s, formatInt32(element))
+	}
+	return strings.Join(s, ",")
+}
+
+func formatFloat32(f float32) string {
+	return strconv.FormatFloat(float64(f), 'f', 10, 64)
+}
