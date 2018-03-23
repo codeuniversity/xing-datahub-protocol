@@ -1,0 +1,16 @@
+package: github.com/codeuniversity/xing-datahub-protocol
+import:
+- package: github.com/gogo/protobuf
+  version: ~1.0.0
+  subpackages:
+  - proto
+- package: github.com/golang/protobuf
+  version: ~1.0.0
+  subpackages:
+  - proto
+- package: github.com/smartystreets/goconvey
+  version: ^1.6.3
+  subpackages:
+  - convey
+- package: github.com/jtolds/gls
+  version: ^4.2.1

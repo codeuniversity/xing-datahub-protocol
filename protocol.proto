@@ -53,3 +53,51 @@ message WrittenCSVInfo {
   string filepath = 2;
   string recordType = 3;
 }
+
+message RawUser {
+  string id = 1;
+  string jobroles = 2;
+  string career_level = 3;
+  string discipline_id = 4;
+  string industry_id = 5;
+  string country = 6;
+  string region = 7;
+  string experience_n_entries_class = 8;
+  string experience_years_experience = 9;
+  string experience_years_in_current = 10;
+  string edu_degree = 11;
+  string edu_fieldofstudies = 12;
+  string wtcj = 13;
+  string premium = 14;
+}
+
+message RawItem {
+  string id = 1;
+  string title = 2;
+  string career_level = 3;
+  string discipline_id = 4;
+  string industry_id = 5;
+  string country = 6;
+  string is_payed = 7;
+  string region = 8;
+  string latitude = 9;
+  string longitude = 10;
+  string employment = 11;
+  string tags = 12;
+  string created_at = 13;
+}
+
+message RawInteraction {
+  string user_id = 1;
+  string item_id = 2;
+  string interaction_type = 3;
+  string created_at = 4;
+}
+
+message RawTargetUser {
+  string user_id = 1;
+}
+
+message RawTargetItem {
+  string item_id = 1;
+}
