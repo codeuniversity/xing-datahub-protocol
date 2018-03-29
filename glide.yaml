@@ -14,3 +14,4 @@ import:
   - convey
 - package: github.com/jtolds/gls
   version: ^4.2.1
+- package: github.com/google/gofuzz
