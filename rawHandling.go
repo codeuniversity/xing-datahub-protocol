@@ -184,9 +184,9 @@ func formatInt64(i int64) string {
 }
 
 func formatInt32Slice(i []int32) string {
-	s := []string{}
-	for _, element := range i {
-		s = append(s, formatInt32(element))
+	s := make([]string, len(i))
+	for index, element := range i {
+		s[index] = formatInt32(element)
 	}
 	return strings.Join(s, ",")
 }

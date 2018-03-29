@@ -4,7 +4,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gogo/protobuf/proto"
 	"github.com/golang/protobuf/jsonpb"
+	fuzz "github.com/google/gofuzz"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -61,4 +63,30 @@ func TestConversionFuncs(t *testing.T) {
 			So(formatInt32Slice([]int32{22, 33, 64}), ShouldEqual, "22,33,64")
 		})
 	})
+}
+
+var rU proto.Message
+
+func BenchmarkUserConversion(b *testing.B) {
+	var user proto.Message
+	random := fuzz.New().NilChance(0)
+	rawUser := &RawUser{}
+	random.Fuzz(rawUser)
+	for n := 0; n < b.N; n++ {
+		user = rawUser.Parse()
+	}
+	rU = user
+}
+
+var rS string
+
+func BenchmarkFormatInt32Slice(b *testing.B) {
+	var result string
+	input := &[]int32{}
+	random := fuzz.New().NumElements(100, 100)
+	random.Fuzz(input)
+	for n := 0; n < b.N; n++ {
+		result = formatInt32Slice(*input)
+	}
+	rS = result
 }
